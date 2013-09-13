@@ -34,8 +34,8 @@ public class BukkitPopulators extends JavaPlugin {
 	 *
 	 * This function works like the ChunkGenerator function, but is not
 	 * called by bukkit directly.
-	 * @param world
-	 * @return
+	 * @param world the world
+	 * @return the normal populators for a world
 	 * @see ChunkGenerator#getDefaultPopulators(World)
 	 */
 	public List<BlockPopulator> getDefaultPopulators(World world){
@@ -45,26 +45,26 @@ public class BukkitPopulators extends JavaPlugin {
 		Plugin skylands = pm.getPlugin("SkylandsPlus");
 
 		switch (world.getEnvironment()){
-		case NORMAL:
-			if(skylands != null) {
-				populators.add(new BiomePopulator());
-				populators.add(new SnowPopulator());
-			}
-			break;
-
-		case THE_END:
-			if(skylands != null) {
-				populators.add(new EndTowerPopulator(world));
-			}
-			break;
-
-		case NETHER:
-			if(skylands != null) {
-				populators.add(new NetherSoulSandPopulator(world));
-				populators.add(new NetherFirePopulator(world));
-				populators.add(new NetherGlowstonePopulator(world));
-			}
-			break;
+			case NORMAL:
+				if(skylands != null) {
+					populators.add(new BiomePopulator());
+					populators.add(new SnowPopulator());
+				}
+				break;
+	
+			case THE_END:
+				if(skylands != null) {
+					populators.add(new EndTowerPopulator(world));
+				}
+				break;
+	
+			case NETHER:
+				if(skylands != null) {
+					populators.add(new NetherSoulSandPopulator(world));
+					populators.add(new NetherFirePopulator(world));
+					populators.add(new NetherGlowstonePopulator(world));
+				}
+				break;
 		}
 
 		return populators;
@@ -73,8 +73,8 @@ public class BukkitPopulators extends JavaPlugin {
 	/**
 	 * Get all populators available
 	 *
-	 * @param world
-	 * @return
+	 * @param world the world
+	 * @return all the populators available for the world
 	 */
 	public List<BlockPopulator> getAllPopulators(World world) {
 		ArrayList<BlockPopulator> populators = new ArrayList<BlockPopulator>();
