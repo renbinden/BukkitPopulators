@@ -46,6 +46,7 @@ public class BukkitPopulators extends JavaPlugin {
 
 		switch (world.getEnvironment()){
 			case NORMAL:
+				populators.add(new BiomeTreePopulator());
 				if(skylandsPlus != null) {
 					populators.add(new BiomePopulator());
 					populators.add(new SnowPopulator());
@@ -78,8 +79,12 @@ public class BukkitPopulators extends JavaPlugin {
 	 */
 	public List<BlockPopulator> getAllPopulators(World world) {
 		ArrayList<BlockPopulator> populators = new ArrayList<BlockPopulator>();
+		
+		populators.add(new BiomeTreePopulator());
 
 		PluginManager pluginManager = getServer().getPluginManager();
+		
+		//SkylandsPlus
 		Plugin skylandsPlus = pluginManager.getPlugin("SkylandsPlus");
 		if(skylandsPlus != null) {
 			populators.add(new BiomePopulator());
