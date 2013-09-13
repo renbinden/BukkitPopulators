@@ -5,6 +5,9 @@ import java.util.List;
 
 import org.bukkit.World;
 import org.bukkit.generator.BlockPopulator;
+import org.bukkit.generator.ChunkGenerator;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import uk.co.jacekk.bukkit.skylandsplus.generation.BiomePopulator;
@@ -16,44 +19,76 @@ import uk.co.jacekk.bukkit.skylandsplus.generation.SnowPopulator;
 
 public class BukkitPopulators extends JavaPlugin {
 
+
 	@Override
 	public void onEnable() {
-		getLogger().info("Loaded BukkitPopulators");
+		PluginManager pm = getServer().getPluginManager();
+		Plugin skylands = pm.getPlugin("SkylandsPlus");
+		if(skylands != null) {
+			getLogger().info("Loading populators from SkylandsPlus");
+		}
 	}
 
-	public static List<BlockPopulator> getDefaultPopulators(World world){
+	/**
+	 * Gets the "normal" populators for a particular world.
+	 *
+	 * This function works like the ChunkGenerator function, but is not
+	 * called by bukkit directly.
+	 * @param world
+	 * @return
+	 * @see ChunkGenerator#getDefaultPopulators(World)
+	 */
+	public List<BlockPopulator> getDefaultPopulators(World world){
 		ArrayList<BlockPopulator> populators = new ArrayList<BlockPopulator>();
+
+		PluginManager pm = getServer().getPluginManager();
+		Plugin skylands = pm.getPlugin("SkylandsPlus");
 
 		switch (world.getEnvironment()){
 		case NORMAL:
-			populators.add(new BiomePopulator());
-			populators.add(new SnowPopulator());
+			if(skylands != null) {
+				populators.add(new BiomePopulator());
+				populators.add(new SnowPopulator());
+			}
 			break;
 
 		case THE_END:
-			populators.add(new EndTowerPopulator(world));
+			if(skylands != null) {
+				populators.add(new EndTowerPopulator(world));
+			}
 			break;
 
 		case NETHER:
-			populators.add(new NetherSoulSandPopulator(world));
-			populators.add(new NetherFirePopulator(world));
-			populators.add(new NetherGlowstonePopulator(world));
+			if(skylands != null) {
+				populators.add(new NetherSoulSandPopulator(world));
+				populators.add(new NetherFirePopulator(world));
+				populators.add(new NetherGlowstonePopulator(world));
+			}
 			break;
 		}
 
 		return populators;
 	}
 
-	public static List<BlockPopulator> getAllPopulators(World world) {
+	/**
+	 * Get all populators available
+	 *
+	 * @param world
+	 * @return
+	 */
+	public List<BlockPopulator> getAllPopulators(World world) {
 		ArrayList<BlockPopulator> populators = new ArrayList<BlockPopulator>();
 
-		populators.add(new BiomePopulator());
-		populators.add(new SnowPopulator());
-		populators.add(new EndTowerPopulator(world));
-		populators.add(new NetherSoulSandPopulator(world));
-		populators.add(new NetherFirePopulator(world));
-		populators.add(new NetherGlowstonePopulator(world));
-
+		PluginManager pm = getServer().getPluginManager();
+		Plugin skylands = pm.getPlugin("SkylandsPlus");
+		if(skylands != null) {
+			populators.add(new BiomePopulator());
+			populators.add(new SnowPopulator());
+			populators.add(new EndTowerPopulator(world));
+			populators.add(new NetherSoulSandPopulator(world));
+			populators.add(new NetherFirePopulator(world));
+			populators.add(new NetherGlowstonePopulator(world));
+		}
 		return populators;
 	}
 }
