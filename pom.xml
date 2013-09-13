@@ -10,6 +10,10 @@
       <id>bukkit-repo</id>
       <url>http://repo.bukkit.org/content/groups/public/</url>
     </repository>
+   	<repository>
+	  <id>jacekk-repo</id>
+	  <url>http://bukkit.jacekk.co.uk:8000/plugin/repository/everything/</url>
+	</repository>
   </repositories>
   <properties>
     <github.global.server>github</github.global.server>
@@ -20,6 +24,11 @@
       <artifactId>bukkit</artifactId>
       <version>1.6.2-R1.0</version>
     </dependency>
+    <dependency>
+      <groupId>uk.co.jacekk.bukkit</groupId>
+	  <artifactId>skylandsplus</artifactId>
+	  <version>0.16-SNAPSHOT</version>
+	</dependency>
   </dependencies>
   <build>
     <defaultGoal>clean install</defaultGoal>
@@ -49,6 +58,22 @@
           <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo</altDeploymentRepository>
         </configuration>
       </plugin>
+ 	  <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-shade-plugin</artifactId>
+		<version>1.3.1</version>
+		<executions>
+		  <execution>
+			<phase>package</phase>
+			<goals>
+			  <goal>shade</goal>
+			</goals>
+			<configuration>
+			  <minimizeJar>true</minimizeJar>
+			</configuration>
+		  </execution>
+		</executions>
+	  </plugin>
       <plugin>
         <groupId>com.github.github</groupId>
         <artifactId>site-maven-plugin</artifactId>
