@@ -22,10 +22,10 @@ public class BukkitPopulators extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
-		PluginManager pm = getServer().getPluginManager();
-		Plugin skylands = pm.getPlugin("SkylandsPlus");
-		if(skylands != null) {
-			getLogger().info("Loading populators from SkylandsPlus");
+		PluginManager pluginManager = getServer().getPluginManager();
+		Plugin skylandsPlus = pluginManager.getPlugin("SkylandsPlus");
+		if(skylandsPlus != null) {
+			this.getLogger().info("Loading populators from SkylandsPlus");
 		}
 	}
 
@@ -41,25 +41,25 @@ public class BukkitPopulators extends JavaPlugin {
 	public List<BlockPopulator> getDefaultPopulators(World world){
 		ArrayList<BlockPopulator> populators = new ArrayList<BlockPopulator>();
 
-		PluginManager pm = getServer().getPluginManager();
-		Plugin skylands = pm.getPlugin("SkylandsPlus");
+		PluginManager pluginManager = this.getServer().getPluginManager();
+		Plugin skylandsPlus = pluginManager.getPlugin("SkylandsPlus");
 
 		switch (world.getEnvironment()){
 			case NORMAL:
-				if(skylands != null) {
+				if(skylandsPlus != null) {
 					populators.add(new BiomePopulator());
 					populators.add(new SnowPopulator());
 				}
 				break;
 	
 			case THE_END:
-				if(skylands != null) {
+				if(skylandsPlus != null) {
 					populators.add(new EndTowerPopulator(world));
 				}
 				break;
 	
 			case NETHER:
-				if(skylands != null) {
+				if(skylandsPlus != null) {
 					populators.add(new NetherSoulSandPopulator(world));
 					populators.add(new NetherFirePopulator(world));
 					populators.add(new NetherGlowstonePopulator(world));
@@ -79,9 +79,9 @@ public class BukkitPopulators extends JavaPlugin {
 	public List<BlockPopulator> getAllPopulators(World world) {
 		ArrayList<BlockPopulator> populators = new ArrayList<BlockPopulator>();
 
-		PluginManager pm = getServer().getPluginManager();
-		Plugin skylands = pm.getPlugin("SkylandsPlus");
-		if(skylands != null) {
+		PluginManager pluginManager = getServer().getPluginManager();
+		Plugin skylandsPlus = pluginManager.getPlugin("SkylandsPlus");
+		if(skylandsPlus != null) {
 			populators.add(new BiomePopulator());
 			populators.add(new SnowPopulator());
 			populators.add(new EndTowerPopulator(world));
