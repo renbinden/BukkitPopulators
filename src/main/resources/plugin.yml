@@ -1,5 +1,5 @@
 name: ${project.name}
-authors: [Lucariatias]
+authors: [Lucariatias, sbliven]
 version: ${project.version}
 description: ${project.description}
 main: io.github.lucariatias.bukkitpopulators.BukkitPopulators
