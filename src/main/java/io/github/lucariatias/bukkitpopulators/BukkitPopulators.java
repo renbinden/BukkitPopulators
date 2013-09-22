@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.World.Environment;
 import org.bukkit.generator.BlockPopulator;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -20,11 +21,23 @@ public class BukkitPopulators extends JavaPlugin {
 	 * @param world the world
 	 * @return the normal populators for a world
 	 * @see ChunkGenerator#getDefaultPopulators(World)
+	 * @see BukkitPopulators#getDefaultPopulators(Environment)
 	 */
 	public List<BlockPopulator> getDefaultPopulators(World world) {
+		return getDefaultPopulators(world.getEnvironment());
+	}
+	
+	/**
+	 * Gets the "normal" populators for a particular environment.
+	 * 
+	 * @param world the world
+	 * @return the normal populators for a world
+	 * @see ChunkGenerator#getDefaultPopulators(World)
+	 */
+	public List<BlockPopulator> getDefaultPopulators(Environment environment) {
 		ArrayList<BlockPopulator> populators = new ArrayList<BlockPopulator>();
 
-		switch (world.getEnvironment()) {
+		switch (environment) {
 			case NORMAL:
 				populators.add(new BiomeTreePopulator());
 				populators.add(new OrePopulator(Material.COAL_ORE, Material.STONE, 8, 8));
@@ -54,9 +67,21 @@ public class BukkitPopulators extends JavaPlugin {
 	 * Get all populators available
 	 * 
 	 * @param world the world
-	 * @return all the populators available for the world
+	 * @return all the populators available
+	 * @deprecated World parameter is no longer needed
+	 * @see BukkitPopulators#getAllPopulators()
 	 */
+	@Deprecated
 	public List<BlockPopulator> getAllPopulators(World world) {
+		return getAllPopulators();
+	}
+	
+	/**
+	 * Get all populators available
+	 * 
+	 * @return all the populators available
+	 */
+	public List<BlockPopulator> getAllPopulators() {
 		ArrayList<BlockPopulator> populators = new ArrayList<BlockPopulator>();
 
 		populators.add(new BiomeTreePopulator());
