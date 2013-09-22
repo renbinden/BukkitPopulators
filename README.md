@@ -24,9 +24,9 @@ Add the following to your pom.xml:
 </repositories>
 <dependencies>
   <dependency>
-    <groupId>org.bukkit</groupId>
-    <artifactId>bukkit</artifactId>
-    <version>1.6.2-R1.0</version>
+    <groupId>io.github.lucariatias</groupId>
+    <artifactId>bukkitpopulators</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
   </dependency>
 </dependencies>
 ```
