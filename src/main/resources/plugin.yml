@@ -4,4 +4,3 @@ version: ${project.version}
 description: ${project.description}
 main: io.github.lucariatias.bukkitpopulators.BukkitPopulators
 load: STARTUP
-softdepend: [SkylandsPlus]

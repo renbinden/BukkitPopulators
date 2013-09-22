@@ -24,11 +24,6 @@
       <artifactId>bukkit</artifactId>
       <version>1.6.2-R1.0</version>
     </dependency>
-    <dependency>
-      <groupId>uk.co.jacekk.bukkit</groupId>
-	  <artifactId>skylandsplus</artifactId>
-	  <version>0.16-SNAPSHOT</version>
-	</dependency>
   </dependencies>
   <build>
     <defaultGoal>clean install</defaultGoal>
