@@ -40,6 +40,7 @@ public class BukkitPopulators extends JavaPlugin {
 		switch (environment) {
 			case NORMAL:
 				populators.add(new BiomeTreePopulator());
+				populators.add(new CavePopulator(8, 32));
 				populators.add(new OrePopulator(Material.COAL_ORE, Material.STONE, 8, 8));
 				populators.add(new OrePopulator(Material.IRON_ORE, Material.STONE, 6, 6));
 				populators.add(new OrePopulator(Material.LAPIS_ORE, Material.STONE, 2, 4));
@@ -53,6 +54,7 @@ public class BukkitPopulators extends JavaPlugin {
 				populators.add(new EndTowerPopulator());
 				break;
 			case NETHER:
+				populators.add(new CavePopulator(5, 32));
 				populators.add(new OrePopulator(Material.QUARTZ_ORE, Material.NETHERRACK, 16, 8));
 				populators.add(new NetherSoulSandPopulator());
 				populators.add(new NetherFirePopulator());
@@ -83,9 +85,8 @@ public class BukkitPopulators extends JavaPlugin {
 	 */
 	public List<BlockPopulator> getAllPopulators() {
 		ArrayList<BlockPopulator> populators = new ArrayList<BlockPopulator>();
-
 		populators.add(new BiomeTreePopulator());
-		populators.add(new BiomeTreePopulator());
+		populators.add(new CavePopulator(8, 32));
 		populators.add(new OrePopulator(Material.COAL_ORE, Material.STONE, 8, 8));
 		populators.add(new OrePopulator(Material.IRON_ORE, Material.STONE, 6, 6));
 		populators.add(new OrePopulator(Material.LAPIS_ORE, Material.STONE, 2, 4));
@@ -94,6 +95,7 @@ public class BukkitPopulators extends JavaPlugin {
 		populators.add(new OrePopulator(Material.REDSTONE_ORE, Material.STONE, 4, 16));
 		populators.add(new OrePopulator(Material.EMERALD_ORE, Material.STONE, 1, 3));
 		populators.add(new OrePopulator(Material.QUARTZ_ORE, Material.NETHERRACK, 16, 8));
+		populators.add(new RidgePopulator(Material.STONE, 3));
 		populators.add(new SnowPopulator());
 		populators.add(new EndTowerPopulator());
 		populators.add(new NetherSoulSandPopulator());
