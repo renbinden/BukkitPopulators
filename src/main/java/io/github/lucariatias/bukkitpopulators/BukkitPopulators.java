@@ -64,19 +64,6 @@ public class BukkitPopulators extends JavaPlugin {
 
 		return populators;
 	}
-
-	/**
-	 * Get all populators available
-	 * 
-	 * @param world the world
-	 * @return all the populators available
-	 * @deprecated World parameter is no longer needed
-	 * @see BukkitPopulators#getAllPopulators()
-	 */
-	@Deprecated
-	public List<BlockPopulator> getAllPopulators(World world) {
-		return getAllPopulators();
-	}
 	
 	/**
 	 * Get all populators available
